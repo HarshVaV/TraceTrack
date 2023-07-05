@@ -4,7 +4,7 @@ const mongoose= require('mongoose') ;
 const locationSchema= new mongoose.Schema({
     name:String,
     date:Date,
-    info:mongoose.Schema.Types.Mixed, 
+    info:mongoose.Schema.Types.Object, 
             //dataType==Mixed -> number/name/dataType of fields can be flexible
   });
 
@@ -20,4 +20,4 @@ const personSchema = new mongoose.Schema({
   location:[locationSchema] //array of object
 });
 
-export default mongoose.model("Person", personSchema);
+module.exports=mongoose.model("Person", personSchema);

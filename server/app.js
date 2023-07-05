@@ -7,6 +7,10 @@ const uploadRoute=require('./routes/upload')
 
 
 const app =express();
+const path = require('path');
+
+app.set('views', path.join(__dirname, 'views'));
+app.set('view engine', 'ejs');
 
 //for parsing get/post request. limit=30mb-> as images will be send
     app.use(bodyParser.json({limit:"30mb",extended:true}));
