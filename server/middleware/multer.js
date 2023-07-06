@@ -40,4 +40,7 @@ const convertImageToBase64 = async (filePath) => {
     return mimeTypeMap[extension] || 'image/jpeg'; // Default to 'image/jpeg' if extension is not recognized
   };
 
-module.exports = { upload, convertImageToBase64 };
+module.exports = { 
+  uploadMiddleware: upload.single("image"), 
+  convertImageToBase64 
+};

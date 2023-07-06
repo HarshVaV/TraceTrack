@@ -3,7 +3,7 @@ const Person = require('../Models/person');
 const {rahulImg, messiImg}=require('./personSeedHelper')
 
 // Connecting to MongoDB
-const CONNECTION_URL='mongodb+srv://btech1059820:7BFHgBE6u2P7jIqg@cluster0.lfhec1y.mongodb.net/?retryWrites=true&w=majority'
+const CONNECTION_URL='mongodb+srv://manavbansalhsr:DB9WRxGqGVwEm15I@cluster0.vrvngug.mongodb.net/'
 mongoose.connect(CONNECTION_URL,{useNewUrlParser:true,useUnifiedTopology:true})
 
 // Deleting all previous data

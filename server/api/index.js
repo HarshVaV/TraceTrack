@@ -1,6 +1,6 @@
 const axios = require('axios');
 const mongoose = require('mongoose');
-const Person = require('../Models/person');
+const Person = require('../Models');
 
 const verifyFaceWithDatabase = async (imageBase64, name, info) => {
   // Iterate through all persons in the database and compare their images
