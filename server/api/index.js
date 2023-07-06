@@ -1,6 +1,6 @@
 const axios = require('axios');
 const mongoose = require('mongoose');
-const Person = require('../Models');
+const Person = require('../Models/person');
 
 const verifyFaceWithDatabase = async (imageBase64, name, info) => {
   // Iterate through all persons in the database and compare their images
@@ -12,10 +12,10 @@ const verifyFaceWithDatabase = async (imageBase64, name, info) => {
     // console.log(personImageBase64[0])
     
     console.log('respone is Here',response)
-    if (response?.data?.data?.resultMessage === "The two faces belong to the different people.") {
+    if (response?.data?.data?.resultMessage === "The two faces belong to the same people.") {
       // Update the person object
       person.lastUpdated = new Date();
-      person.location.push({ name, date: new Date(), info });
+      person.locations.push({ location, date: new Date(), info });
       
       console.log('Matched Found', person);
       

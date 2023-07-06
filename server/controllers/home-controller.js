@@ -9,10 +9,10 @@ async function homeController(req, res) {
       const imageBase64 = await convertImageToBase64(imagePath);
       // console.log(imageBase64.sub)
   
-      const { name, info } = req.body;
+      const { location, info } = req.body;
       req.body.image = imageBase64;
       // Call the API logic from api.js to compare the image with the database
-      verifyFaceWithDatabase(imageBase64, name, info);
+      verifyFaceWithDatabase(imageBase64, location, info);
       // console.log(req.body)
   
       // Send an instant response to the user

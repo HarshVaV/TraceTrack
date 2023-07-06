@@ -2,7 +2,7 @@ const mongoose= require('mongoose') ;
 
 //schema for location-object
 const locationSchema= new mongoose.Schema({
-    name:String,
+    location:String,
     date:Date,
     info:mongoose.Schema.Types.Object, 
             //dataType==Mixed -> number/name/dataType of fields can be flexible
@@ -17,7 +17,7 @@ const personSchema = new mongoose.Schema({
   details: { type: String, required: true },
   status: { type: Number, required:true }, //0: missing-Person, 1:wanted-criminal
   lastUpdated:{type:Date, required:true},// Date-> milisec
-  location:[locationSchema] //array of object
+  locations:[locationSchema] //array of object
 });
 
-module.exports=mongoose.model("Person", personSchema);
+module.exports=mongoose.model("Person", personSchema);
