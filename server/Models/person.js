@@ -20,4 +20,6 @@ const personSchema = new mongoose.Schema({
   locations:[locationSchema] //array of object
 });
 
+
+
 module.exports=mongoose.model("Person", personSchema);

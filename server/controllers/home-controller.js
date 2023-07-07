@@ -1,7 +1,7 @@
 const { verifyFaceWithDatabase } = require('../api');
 const { convertImageToBase64 } = require('../middleware/multer');
 
-async function homeController(req, res) {
+async function verifyPerson(req, res) {
     const imagePath = req.file.path;
   
     try {
@@ -20,10 +20,10 @@ async function homeController(req, res) {
       // res.send('Thank You');
     } catch (error) {
       console.error(error);
-      res.status(500).send('An error occurred');
+      return res.status(500).send('An error occurred');
     }
   };
 
 module.exports = {
-    homeController: homeController
+    verifyPerson
 };
