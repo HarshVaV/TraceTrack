@@ -5,7 +5,7 @@
 </head>
 <body>
 
-    <a href="/police/">
+    <a href="/police/create">
     <button >Add new Person</button>
     </a>
 
@@ -26,6 +26,11 @@
                 <li><%= locat.location %></li>
     <% }) %>
         </ul>
+        <% const id = person._id.toString() %>
+        <% console.log(id) %>
+        <a href="/police/view/<%=id%>">
+            More
+        </a>
     </div>
 
   <% }) %>
