@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Police Home Page</title>
+</head>
+<body>
+
+    <a href="/police/create">
+    <button >Add new Person</button>
+    </a>
+
+  <h1>All People Details</h1>
+  <% People.forEach(function(person){ %>
+    <div>
+        <h2><%= person.name %></h2>
+        <p>Age: <%= person.age %></p>
+        <p>Gender: <%= person.gender %></p>
+        <p>Details: <%= person.details %></p>
+    <%  if(person.status === 0){ %>
+            <p>Details: Still Not Found</p>
+    <%  }else{ %>
+            <p>Details: Found</p>
+    <%  } %>
+        <ul>
+    <% (person.locations).forEach(function(locat){ %>
+                <li><%= locat.location %></li>
+    <% }) %>
+        </ul>
+        <% const id = person._id.toString() %>
+        <% console.log(id) %>
+        <a href="/police/view/<%=id%>">
+            More
+        </a>
+    </div>
+
+  <% }) %>
+
+</body>
+</html>

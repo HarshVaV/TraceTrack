@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Missing Details</title>
+</head>
+<body>
+
+    <a href="/police">
+    <button >Home</button>
+    </a>
+
+  <h1>Missing Person:</h1>
+    <div>
+        <!-- <h1>hi</h1> -->
+        <img id="image" src="<%= person.selectedFile %>" alt="Converted Image" width="20%" height="20%">
+        <h2><%= person.name %></h2>
+        <p>Age: <%= person.age %></p>
+        <p>Gender: <%= person.gender %></p>
+        <p>Details: <%= person.details %></p> 
+        
+    <%  if(person.status === 0){ %>
+            <p>Details: Still Not Found</p>
+    <%  }else{ %>
+            <p>Details: Found</p>
+    <%  } %>
+     <%  if(person.locations.length > 0){ %>
+        <ul>
+    <%  (person.locations).forEach(function(locat){ %>
+            <li><%= locat.location %></li>
+        </ul>
+        <%  })} %> 
+    </div>
+
+
+</body>
+</html>
