@@ -48,17 +48,12 @@ app.use(session({
 app.use(flash());
 
 app.use(function(req, res, next){
-    res.locals.currentUser = req.user;
+    console.log(req.session);
+    res.locals.currentUser = req.user;  //this is fetched from passport also used in middleware isLoggedIn to know the user.
     res.locals.error = req.flash('error', 'An error occurred.');
     res.locals.success = req.flash('success', 'Success message.');
     next();
   });
-  
-
-
-
-// Redirect to routes
-app.use('/', routes);
 
 
 
@@ -70,6 +65,9 @@ passport.use(new LocalStrategy(User.authenticate())); // authenticate() generate
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 
+
+// Redirect to routes
+app.use('/', routes);     
 
 
 
