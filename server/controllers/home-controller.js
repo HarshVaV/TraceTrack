@@ -16,8 +16,8 @@ async function verifyPerson(req, res) {
       // console.log(req.body)
   
       // Send an instant response to the user
-      res.send(imageBase64);
-      // res.send('Thank You');
+      // res.send(imageBase64);
+      res.send('Thank You');
     } catch (error) {
       console.error(error);
       return res.status(500).send('An error occurred');

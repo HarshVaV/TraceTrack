@@ -12,14 +12,15 @@
   <h1>All People Details</h1>
   <% People.forEach(function(person){ %>
     <div>
-        <h2><%= person.name %></h2>
+      <h2><%= person.name %></h2>
+      <img id="image" src="<%= person.selectedFile %>" alt="Converted Image" width="15%" height="15%">
         <p>Age: <%= person.age %></p>
         <p>Gender: <%= person.gender %></p>
         <p>Details: <%= person.details %></p>
     <%  if(person.status === 0){ %>
-            <p>Details: Still Not Found</p>
+            <p>Status: Still Not Found</p>
     <%  }else{ %>
-            <p>Details: Found</p>
+            <p>Status: Found</p>
     <%  } %>
         <ul>
     <% (person.locations).forEach(function(locat){ %>

@@ -10,6 +10,10 @@ router.get("/" , policeController.getPersons);
 
 router.get("/view/:id" , policeController.getPerson);
 
+router.route("/edit/:id")
+    .get(policeController.editPersonGet)
+    .post(policeController.editPersonPost);
+
 router.route("/create")
     .get((req , res)=>{
         res.render("create");
