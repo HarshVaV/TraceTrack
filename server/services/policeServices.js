@@ -44,8 +44,19 @@ async function createPerson(data){
     }
 };
 
+async function editPerson(id , data){
+    try {
+        const person = await crudRepository.edit(id , data);
+        return person;
+    } catch (error) {
+        console.log(error);
+        return error;
+    }
+}
+
 module.exports = {
     getPeople,
     getPerson,
-    createPerson
+    createPerson,
+    editPerson
 };

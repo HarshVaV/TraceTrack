@@ -11,6 +11,12 @@ router.get("/" , policeController.getPersons);
 
 router.get("/view/:id" , policeController.getPerson);
 
+
+router.route("/edit/:id")
+    .get(isLoggedIn, policeController.editPersonGet)
+    .post(isLoggedIn, policeController.editPersonPost);
+
+
 router.route("/create")
     .get(isLoggedIn, (req , res)=>{
         res.render("create");

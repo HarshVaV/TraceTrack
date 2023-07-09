@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Edit Person Information</title>
+</head>
+<body>
+    <% const id = person._id.toString() %>
+        <% console.log(id) %>
+    <img id="image" src="<%= person.selectedFile %>" alt="Converted Image" width="20%" height="20%">
+  <h1>Edit Person Information</h1>
+  <form action="/police/edit/<%=id%>" method="POST">
+    <div>
+      <label for="name">Name:</label>
+      <input type="text" id="name" name="name" value="<%=person.name%>" required>
+    </div>
+    <div>
+      <label for="age">Age:</label>
+      <input type="text" id="age" name="age" value="<%=person.age%>" required>
+    </div>
+    <div>
+      <label for="gender">Gender:</label>
+      <input type="text" id="gender" name="gender" value="<%=person.gender%>" required>
+    </div>
+    <div>
+      <label for="details">Details:</label>
+      <input type="text" id="details" name="details" value="<%=person.details%>" required>
+    </div>
+    <div>
+      <label for="status">Status:</label>
+      <select id="dropdown" name="status">
+        <option value="0" <% if (person.status === 0) { %> selected <% } %> >Still not Found</option>
+        <option value="1" <% if (person.status === 1) { %> selected <% } %> >Found</option>
+      </select>
+    </div>
+    <button type="submit">Submit</button>
+  </form>
+</body>
+</html>

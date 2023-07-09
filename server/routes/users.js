@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const User = require('../Models/user');
 const passport = require('passport');
+const { isLoggedIn } = require("../middleware/index"); // Require the middleware file
 
 router.get('/register', (req, res) => {
   res.render('users/register');
@@ -46,10 +47,13 @@ router.post('/login', passport.authenticate('local', { failureFlash: true, failu
   res.redirect(redirectUrl);
 });
 
-router.get('/logout', (req, res) => {
-  req.logout();
-  req.flash('success', "GoodBye!");
-  res.redirect('/');
-})
+router.get('/logout', isLoggedIn, (req, res, next) => {
+  req.logout(function (err) {
+    if (err) { return next(err); }
+    res.redirect('/');
+    req.flash('success', "GoodBye!");
+    console.log("logged out!");
+  });
+});
 
 module.exports = router;

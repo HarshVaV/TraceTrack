@@ -19,9 +19,9 @@
         <p>Details: <%= person.details %></p> 
         
     <%  if(person.status === 0){ %>
-            <p>Details: Still Not Found</p>
+            <p>Status: Still Not Found</p>
     <%  }else{ %>
-            <p>Details: Found</p>
+            <p>Status: Found</p>
     <%  } %>
      <%  if(person.locations.length > 0){ %>
         <ul>
@@ -29,6 +29,11 @@
             <li><%= locat.location %></li>
         </ul>
         <%  })} %> 
+        <% const id = person._id.toString() %>
+        <% console.log(id) %>
+        <a href="/police/edit/<%=id%>">
+            Edit
+        </a>
     </div>
 
 

@@ -66,8 +66,29 @@ async function create(data){
     }
 }
 
+async function edit(id , data){
+    const {name , age , gender , details , status} = data;
+    const docs = await Person.findByIdAndUpdate(
+        {_id: id},
+        {
+            name: name,
+            age: age,
+            gender: gender,
+            details: details,
+            status: status
+        }
+    );
+    if(docs){
+        return docs;
+    } else{
+        console.log("Error occured while editting the person in crud-repository");
+        console.log('eror');
+    }
+}
+
 module.exports = {
     getAll,
     getOne, 
-    create
+    create,
+    edit
 }
