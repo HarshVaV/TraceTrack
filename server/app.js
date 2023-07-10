@@ -11,8 +11,10 @@ const flash = require('connect-flash');
 const User = require('./Models/user');  
 
 
+
 //Import routers
 const routes=require('./routes');
+
 
 
 
@@ -27,7 +29,7 @@ app.use(express.static(path.join(__dirname,'public'))); //serves static files fr
 
 app.use(bodyParser.urlencoded({extended: true})); 
 
-app.use(express.urlencoded({extended:true})); // parasing url to object using middle-ware
+app.use(express.urlencoded({extended:true})); // parasing url to object using middleware
 app.use(express.json({extended:true})); // parasing complex-josn to object using middle-ware
 
 
