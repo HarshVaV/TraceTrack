@@ -14,6 +14,8 @@ router.route("/edit/:id")
     .get(policeController.editPersonGet)
     .post(policeController.editPersonPost);
 
+router.post("/delete/:id" , policeController.deletePerson);
+
 router.route("/create")
     .get((req , res)=>{
         res.render("create");

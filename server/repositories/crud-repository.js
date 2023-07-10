@@ -67,22 +67,37 @@ async function create(data){
 }
 
 async function edit(id , data){
-    const {name , age , gender , details , status} = data;
-    const docs = await Person.findByIdAndUpdate(
-        {_id: id},
-        {
-            name: name,
-            age: age,
-            gender: gender,
-            details: details,
-            status: status
+    try {
+        const {name , age , gender , details , status} = data;
+        const docs = await Person.findByIdAndUpdate(
+            {_id: id},
+            {
+                name: name,
+                age: age,
+                gender: gender,
+                details: details,
+                status: status
+            }
+        );
+        if(docs){
+            return docs;
+        } else{
+            console.log("Error occured while editting the person in crud-repository");
+            console.log('eror');
         }
-    );
-    if(docs){
-        return docs;
-    } else{
-        console.log("Error occured while editting the person in crud-repository");
-        console.log('eror');
+    } catch (error) {
+        console.log("Error occured while editing person data");
+        throw error;
+    }
+    
+}
+
+async function deletep(id) {
+    try {
+        await Person.findByIdAndDelete(id);
+    } catch (error) {
+        console.log("Error occured while deleting person data");
+        throw error;
     }
 }
 
@@ -90,5 +105,6 @@ module.exports = {
     getAll,
     getOne, 
     create,
-    edit
+    edit,
+    deletep
 }
