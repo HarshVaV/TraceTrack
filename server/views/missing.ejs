@@ -18,22 +18,28 @@
         <p>Gender: <%= person.gender %></p>
         <p>Details: <%= person.details %></p> 
         
-    <%  if(person.status === 0){ %>
-            <p>Status: Still Not Found</p>
-    <%  }else{ %>
-            <p>Status: Found</p>
-    <%  } %>
-     <%  if(person.locations.length > 0){ %>
-        <ul>
-    <%  (person.locations).forEach(function(locat){ %>
-            <li><%= locat.location %></li>
-        </ul>
+        <%  if(person.status === 0){ %>
+                <p>Status: Still Not Found</p>
+        <%  }else{ %>
+                <p>Status: Found</p>
+        <%  } %>
+        <%  if(person.locations.length > 0){ %>
+            <ul>
+        <%  (person.locations).forEach(function(locat){ %>
+                <li><%= locat.location %></li>
+            </ul>
         <%  })} %> 
         <% const id = person._id.toString() %>
         <% console.log(id) %>
-        <a href="/police/edit/<%=id%>">
-            Edit
-        </a>
+        <div>
+            <a href="/police/edit/<%=id%>">
+                <button>Edit</button>
+            </a>
+            <form action="/police/delete/<%=id%>" method="POST">
+                <button type="submit">Delete</button>
+            </form>
+                
+        </div>
     </div>
 
 

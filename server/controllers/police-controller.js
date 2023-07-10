@@ -49,11 +49,10 @@ async function createPerson(req , res) {
             details
         });
         console.log("New Person details added to the database");
-
+        const id = Person._id.toString()
+        
         //  Turn this to render the missing.ejs
-        res.render("Police" , {
-            person: Person
-        });
+        res.redirect("/police/view/"+id);
         // return res.status(200).send("Request Successful", Person);
     } catch (error) {
         console.error(error);
@@ -94,10 +93,26 @@ async function editPersonPost(req , res) {
     }
 }
 
+async function deletePerson(req , res) {
+    try {
+        console.log("Entered Police Controller");
+
+        const id = req.params.id;
+
+        await PoliceServices.deletePerson(id);
+
+        res.redirect("/police/");
+
+    } catch (error) {
+        return res.status(500).send('Error in police controller');
+    }
+}
+
 module.exports = {
     getPersons,
     getPerson,
     createPerson,
     editPersonGet,
-    editPersonPost
+    editPersonPost,
+    deletePerson
 }

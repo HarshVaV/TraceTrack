@@ -8,7 +8,7 @@ async function getPeople(){
 
     } catch (error) {
         console.log(error);
-        return error;
+        throw error;
         // throw new Error({
         //     message: "An error occured while getting the details of all People"
         // });
@@ -23,7 +23,7 @@ async function getPerson(id){
 
     } catch (error) {
         // console.log(error);
-        return error;
+        throw error;
         // throw new Error({
         //     message: "An error occured while getting the details of a person"
         // });
@@ -37,7 +37,7 @@ async function createPerson(data){
         return person;
     } catch (error) {
         console.log(error);
-        return error;
+        throw error;
         // throw new Error({
         //     message: "An error occured while creating the person"
         // });
@@ -50,7 +50,16 @@ async function editPerson(id , data){
         return person;
     } catch (error) {
         console.log(error);
-        return error;
+        throw error;
+    }
+}
+
+async function deletePerson(id) {
+    try {
+        await crudRepository.deletep(id);
+    } catch (error) {
+        console.log(error);
+        throw error;
     }
 }
 
@@ -58,5 +67,6 @@ module.exports = {
     getPeople,
     getPerson,
     createPerson,
-    editPerson
+    editPerson,
+    deletePerson
 };

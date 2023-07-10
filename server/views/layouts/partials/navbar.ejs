@@ -1,0 +1,28 @@
+<header class="fixed-top">
+    <nav class=" navbar navbar-expand-lg navbar-light bg-light sticky-top">
+        <div class="container-fluid brandName  "> <span class="mx-3 me-5 fs-3 my-auto fw-bold text-primary">TraceTrack</span></a> 
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item mx-2">
+                <a class="nav-link active" aria-current="page" href="/">Home</a>
+              </li>
+              <li class="nav-item mx-2">
+                <a class="nav-link" href="/campgrounds/new">Add New</a>
+              </li>
+              
+            </ul>
+            <form class="d-flex" action="/campgrounds" method="GET">
+                <input class="form-control me-2" type="search" placeholder="Search by location" aria-label="Search" name="location" id="location">
+                <button class="btn btn-outline-success me-3" type="submit">Search</button>
+             </form>
+             <br>
+             
+              <a class="btn btn-danger" href="/user/logout">Logout</a>
+             
+          </div>
+        </div>
+      </nav>
+</header>

@@ -16,11 +16,10 @@ router.route("/edit/:id")
     .get(isLoggedIn, policeController.editPersonGet)
     .post(isLoggedIn, policeController.editPersonPost);
 
+router.post("/delete/:id" , isLoggedIn, policeController.deletePerson);
 
 router.route("/create")
     .get(isLoggedIn, (req , res)=>{
         res.render("create");
     })
     .post(isLoggedIn, uploadMiddleware , policeController.createPerson);
-
-module.exports = router;

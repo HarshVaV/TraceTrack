@@ -1,39 +1,16 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <title>Person Information</title>
-</head>
-<body>
-  <h1>Person Information</h1>
-  <form action="/" method="POST" enctype="multipart/form-data">
-    <div>
-      <label for="location">Location:</label>
-      <input type="text" id="location" name="location" required>
-    </div>
-    <div>
-      <label for="image">Image:</label>
-      <input type="file" id="image" name="image" required accept="image/*">
-    </div>
-    <div>
-      <label for="name">Your Name:</label>
-      <input type="text" id="name" name="info[name]">
-    </div>
-    <div>
-      <label for="phone">Phone:</label>
-      <input type="text" id="phone" name="info[phone]">
-    </div>
-    <div>
-      <label for="email">Email:</label>
-      <input type="email" id="email" name="info[email]">
-    </div>
-    <button type="submit">Submit</button>
-  </form>
+<% layout('layouts/boilerplate') %>
 
-  <a href="/police/">Missing people</a>
-  <br>
-  <a href="/login/">Login</a>
-  <br>
-  <a href="/logout/">LogOut</a>
+<link rel="stylesheet" href="/styles/home.css">
 
-</body>
-</html>
+<div class="my-2 ">
+  <h1  class="text-center text-primary" >TraceTrack</h1>
+  <h5 class="text-center text-secondary">Helping citizens by the help of citizens</h5>
+
+</div>
+<div class="container mx-auto center">
+  <p class="mx-auto">Noticed anyone suspicious lately?</p>
+  <a class="btn btn-primary mx-auto" href="/report">Reoprt</a>
+
+  <p class="text-secondary fs-6 mt-5">Member of Law enforcement? <a  class="text-secondary" href="/auth">Login</a></p>
+</div>
+<div id="particles-js"></div>

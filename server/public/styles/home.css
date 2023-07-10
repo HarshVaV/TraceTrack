@@ -1,0 +1,21 @@
+h1{
+    z-index: 9999;
+    font-size: 5rem;
+}
+.center{
+    font-size: 1.5rem;
+    margin: 10vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* margin: auto; */
+}
+.btn{
+    
+    /* display: inline-block; */
+    /* height:  3rem; */
+    margin: auto;
+    padding: 1rem 5rem; 
+    /* top rgt lft bottom */
+    font-size: 2rem;
+}

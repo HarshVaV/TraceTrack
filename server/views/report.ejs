@@ -1,0 +1,102 @@
+<% layout('layouts/boilerplate') %>
+
+<!-- Old form: NOT-Deleted for Refernce purpose .....
+
+
+  <form action="/" method="POST" enctype="multipart/form-data">
+    <div>
+      <label for="location">Location:</label>
+      <input type="text" id="location" name="location" required>
+    </div>
+    <div>
+      <label for="image">Image:</label>
+      <input type="file" id="image" name="image" required accept="image/*">
+    </div>
+    <div>
+      <label for="name">Your Name:</label>
+      <input type="text" id="name" name="info[name]">
+    </div>
+    <div>
+      <label for="phone">Phone:</label>
+      <input type="text" id="phone" name="info[phone]">
+    </div>
+    <div>
+      <label for="email">Email:</label>
+      <input type="email" id="email" name="info[email]">
+    </div>
+    <button type="submit">Submit</button>
+  </form>
+
+
+ -->
+  <div class="bg-white mt-5 col-8 offset-2 shadow p-3 mb-5 bg-body rounded">
+    <h1 class="text-center mt-3">Person Information</h1>
+
+                        <!-- Form -->
+
+    <!-- location -->
+    <form class="row g-3 needs-validation m-3" form action="/" method="POST" enctype="multipart/form-data" novalidate>
+
+      <div class="col-md-12">
+        <label for="location" class="form-label">Location</label>
+        <input type="text" class="form-control" id="location" name="location" placeholder="Location where suspect spotted..." required>
+        <div class="valid-feedback">
+          Looks good!
+        </div>
+        <div class="invalid-feedback">
+          Please provide Location.
+        </div>
+      </div>
+      
+      <br>
+      <!-- image -->
+      <div class="mb-3">
+        <label for="image" class="form-label">Suspect Image</label>
+        <input type="file" class="form-control" id="image" name="image" required accept="image/*">
+        <div class="invalid-feedback">Photo of suspect required</div>
+      </div>
+     
+      <!-- YourName -->
+      
+      <div class="col-md-4">
+        <label for="name" class="form-label">Name</label>
+        <input type="text" class="form-control"id="name" name="info[name]" placeholder="Your name...">
+      </div>
+      <br>
+      <!-- Phone -->
+      
+      <div class="col-md-4">
+        <label for="phone" class="form-label">Phone</label>
+        <input type="number" class="form-control" id="phone" name="info[phone]" placeholder="Your active phone number...">
+      </div>
+      <br>
+      <!-- Email -->
+      
+      <div class="col-md-4">
+        <label for="email" class="form-label">Email</label>
+        <input type="email" class="form-control" id="email" name="info[email]" placeholder="Your active email...">
+      </div>
+      <br>
+      <!-- additionalDetails -->
+      <div class="mb-3">
+        <label for="detail" class="form-label">Additional Details</label>
+        <textarea class="form-control" id="validationTextarea" placeholder="Any other detail, like reason for suspicious, whereabouts, tips, etc..." id="phone" name="info[deatils]"></textarea>
+        
+      </div>
+      <br>
+      
+      <div class="col-12">
+        <button class="btn btn-primary" type="submit">Submit</button>
+        <a class="btn btn-warning" href="/">&nbsp;Back&nbsp;</a>
+      </div>
+    </form>
+
+  </div>
+
+
+
+ 
+  
+
+
+  <div id="particles-js"></div>
