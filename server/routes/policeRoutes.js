@@ -23,3 +23,5 @@ router.route("/create")
         res.render("create");
     })
     .post(isLoggedIn, uploadMiddleware , policeController.createPerson);
+
+module.exports = router;
