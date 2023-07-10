@@ -1,6 +1,7 @@
 const express=require('express')
 const bodyParser=require('body-parser')
 const mongoose=require('mongoose')
+const ejsMate = require('ejs-mate');
 
 //import routers
 const routes=require('./routes')
@@ -9,8 +10,11 @@ const routes=require('./routes')
 const app =express();
 const path = require('path');
 
-app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
+app.set('views',path.join(__dirname,'views'))
+app.engine('ejs',ejsMate);
+
+app.use(express.static(path.join(__dirname,'public')));
 
 //for parsing get/post request. limit=30mb-> as images will be send
 app.use(bodyParser.json({limit:"30mb",extended:true}));
