@@ -4,15 +4,18 @@
 
   <div class='login col-6 my-5 mx-auto' id='login'>
     <div class='head'>
-      <h1 class='company'>TrackTrack</h1>
+      <h1 class='company'>TraceTrack</h1>
     </div>
 
     <div class='form'>
-      <form>
-        <input type="text" placeholder='Username' class='text' id='username' required><br>
-        <input type="password" placeholder='••••••••••••••' class='password'><br>
-        <a href="#" class='btn btn-outline-light mt-2 me-2 px-4' id='do-login'>Login</a>
-        <a href="/" class='btn btn-outline-warning mt-2 px-4 ' id='do-login'>Back</a>
+      <form action="/login" method="POST" class="row g-3 needs-validation m-3" novalidate>
+
+        <input class="form-control text" type="text" placeholder='Username' name='username' id="username" required>
+        <input class="form-control password" type="password" placeholder='••••••••••••••' name="password" id="password" required>
+
+
+        <button type="submit" class='btn btn-outline-light md-mt-2 me-2 px-4 md-col-2 ' id='do-login'>Login</button>
+        <a href="/" class='btn btn-outline-warning mt-2 px-4 md-col-2 ' id='do-login'>Back</a>
         <!-- <a href="#" class='forgot'>Forgot?</a> -->
       </form>
     </div>

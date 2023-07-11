@@ -5,11 +5,11 @@ const {homeController} = require('../controllers');
 
 const router = express.Router()
 router.get("/",(req,res)=>{
-  res.render("home")
+  res.render("users/home")
 })
 router.route("/report")
   .get((req , res)=>{
-    res.render("report");
+    res.render("users/report");
   })
   .post(uploadMiddleware, homeController.verifyPerson);
 

@@ -40,7 +40,8 @@
 }
 .login .form input[type=text].text {
   border: none;
-  background: none;
+  /* background: transparent; */
+  background-color: transparent;
   box-shadow: 0px 2px 0px 0px white;
   width: 100%;
   color: white;
@@ -52,7 +53,8 @@
 }
 .login .form input[type=password].password {
   border: none;
-  background: none;
+  /* background: none; */
+  background-color: transparent;
   box-shadow: 0px 2px 0px 0px white;
   width: 100%;
   color: white;

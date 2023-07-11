@@ -8,7 +8,7 @@ async function getPersons(req , res) {
         //  get the details of all the people in the database through PoliceServices
         const People = await PoliceServices.getPeople();
         //  console.log(People);
-        res.render("Police" , {
+        res.render("police/home" , {
             People: People
         });
         // res.send(People);
@@ -25,7 +25,7 @@ async function getPerson(req , res) {
         //  get the details of all the people in the database through PoliceServices
         const Person = await PoliceServices.getPerson(req.params.id);
         // console.log(People);
-        res.render("missing",{
+        res.render("police/missing",{
             person: Person
         });
         // res.send(People);
@@ -66,7 +66,7 @@ async function editPersonGet(req , res) {
         //  get the details of all the people in the database through PoliceServices
         const Person = await PoliceServices.getPerson(req.params.id);
         // console.log(People);
-        res.render("edit",{
+        res.render("police/edit",{
             person: Person
         });
         // res.send(People);

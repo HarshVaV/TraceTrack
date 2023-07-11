@@ -20,7 +20,7 @@ router.post("/delete/:id" , isLoggedIn, policeController.deletePerson);
 
 router.route("/create")
     .get(isLoggedIn, (req , res)=>{
-        res.render("create");
+        res.render("police/create");
     })
     .post(isLoggedIn, uploadMiddleware , policeController.createPerson);
 
