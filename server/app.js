@@ -6,6 +6,7 @@ const ejsMate = require('ejs-mate');
 const passport = require('passport');
 const LocalStrategy = require('passport-local');
 const flash = require('connect-flash');
+const socketIO = require('socket.io');
 
 //imports user model
 const User = require('./Models/user');  
@@ -49,11 +50,11 @@ app.use(session({
   
 app.use(flash());
 
-app.use(function(req, res, next){
-    console.log(req.session);
+app.use((req, res, next)=>{
+    // console.log(req.session);
     res.locals.currentUser = req.user;  //this is fetched from passport also used in middleware isLoggedIn to know the user.
-    res.locals.error = req.flash('error', 'An error occurred.');
-    res.locals.success = req.flash('success', 'Success message.');
+    res.locals.error = req.flash('error');
+    res.locals.success = req.flash('success');
     next();
   });
 
@@ -69,7 +70,7 @@ passport.deserializeUser(User.deserializeUser());
 
 
 // Redirect to routes
-app.use('/', routes);     
+// app.use('/', routes);     
 
 
 
@@ -77,7 +78,28 @@ app.use('/', routes);
 const CONNECTION_URL='mongodb+srv://manavbansalhsr:DB9WRxGqGVwEm15I@cluster0.vrvngug.mongodb.net/'
 const PORT=2000;
 mongoose.connect(CONNECTION_URL,{useNewUrlParser:true,useUnifiedTopology:true})
-    .then(()=>app.listen(PORT,()=>console.log(`Listening on Port ${PORT}`)))
+    .then(()=>{
+      // app.listen(PORT,()=>console.log(`Listening on Port ${PORT}`))
+      // Start the server. Store return server-Object
+        const server = app.listen(PORT, () => {
+          console.log(`Listening on Port ${PORT}`);
+        });
+
+      // Set up Socket.IO connection
+          const io = socketIO(server);
+          io.on('connection', (socket) => {
+            console.log('New client connected');
+
+            // Disconnect event handler
+            socket.on('disconnect', () => {
+              console.log('Client disconnected');
+            });
+          });
+
+      // Set up routes with Socket.IO
+          // console.log(io)
+          app.use('/', routes(io));
+    })
     .catch((err)=>console.log(err.message));
 // mongoose.set('useFindAndModify', false); Commented-> as causing error
 

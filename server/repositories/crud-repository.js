@@ -40,7 +40,7 @@ async function create(data){
     try {
         console.log("Entered crud repository"); 
 
-        const {name , imageBase64 , gender, age , details} = data;
+        const {name , imageBase64 , gender, age , details,status} = data;
         
         const docs = await Person.create({
             name: name,
@@ -48,7 +48,7 @@ async function create(data){
             age: age,
             selectedFile: imageBase64,
             details: details,
-            status: 0,  //missing
+            status: status,
             lastUpdated: new Date(),
             location: [] // Since we are not populating the location field
         }); 

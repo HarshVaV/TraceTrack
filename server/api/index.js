@@ -2,8 +2,10 @@ const axios = require('axios');
 const mongoose = require('mongoose');
 const {Person} = require('../Models');
 
-const verifyFaceWithDatabase = async (imageBase64, location, info) => {
+const verifyFaceWithDatabase = async (imageBase64, location, info,io) => {
   // Iterate through all persons in the database and compare their images
+
+
   const persons = await Person.find();
   for (const person of persons) {
     const personImageBase64 = person.selectedFile;
@@ -23,6 +25,7 @@ const verifyFaceWithDatabase = async (imageBase64, location, info) => {
         // Save the updated person object
         const updatedPerson = await person.save();
         console.log('Person updated:', updatedPerson);
+        io.emit('newMatch','New match Found. Reload for more info') //used for Notification
         // return updatedPerson;
       } catch (error) {
         console.error('Error updating person:', error);

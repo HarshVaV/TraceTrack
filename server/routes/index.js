@@ -6,8 +6,17 @@ const userRoutes = require('./users');
 
 const router = express.Router();
 
-router.use('/', homeRoutes);
-router.use('/', userRoutes);
-router.use('/police', policeRoutes);
+// Modify the module export to accept the io object
+module.exports =function(io){
+    // console.log(io)
+    router.use('/', homeRoutes(io)); // Pass the io object to homeRoutes
+    router.use('/', userRoutes);
+    router.use('/police', policeRoutes);
+    return router;
+}; //call the function for proper export
 
-module.exports = router;
+// router.use('/', homeRoutes); // Pass the io object to homeRoutes
+// router.use('/', userRoutes);
+// router.use('/police', policeRoutes);
+// module.exports=router;
+

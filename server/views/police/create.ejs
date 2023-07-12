@@ -56,7 +56,7 @@
 
 
                 <!-- Gender -->
-                <div class="col-md-6">
+                <div class="col-md-4">
                     <label for="gender" class="form-label">Gender</label>
                     <input type="text" class="form-control" id="gender" name="gender" required>
                     <div class="valid-feedback">
@@ -69,7 +69,7 @@
 
 
                 <!-- Age -->
-                <div class="col-md-6">
+                <div class="col-md-4">
                     <label for="age" class="form-label">Age</label>
                     <input type="text" class="form-control" id="age" name="age" required>
 
@@ -78,6 +78,22 @@
                     </div>
                     <div class="invalid-feedback">
                         Please provide Age
+                    </div>
+                </div>
+
+                <!-- Status-->
+                <div class="col-md-4">
+                    <label for="status" class="form-label">Status</label>
+                    <select class="form-select" id="status" name="status" required>
+                        <option selected disabled value=""> </option>
+                        <option value=0>Missing</option>
+                        <option value=1>Wanted</option>
+                    </select>
+                    <div class="valid-feedback">
+                        Looks good!
+                    </div>
+                    <div class="invalid-feedback">
+                        Please select Status
                     </div>
                 </div>
 

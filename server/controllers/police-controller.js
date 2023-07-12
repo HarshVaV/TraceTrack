@@ -40,13 +40,14 @@ async function createPerson(req , res) {
     const imagePath = req.file.path;
     try {
         const imageBase64 = await convertImageToBase64(imagePath);
-        const {name , gender , age , details} = req.body;
+        const {name , gender , age , details,status} = req.body;
         const Person = await PoliceServices.createPerson({
             name ,
             imageBase64 ,
             gender , 
             age , 
-            details
+            details,
+            status
         });
         console.log("New Person details added to the database");
         const id = Person._id.toString()
