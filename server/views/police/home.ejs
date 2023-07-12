@@ -5,12 +5,12 @@
 
     <!-- <h1>All People Details</h1> -->
     <% People.forEach(function(person){ %>
-      <div class="card col-12 shadow p-3 mt-3 bg-body rounded" style="max-height: 15rem;" >
+      <div class="card col-12 shadow p-3 mt-3 bg-body rounded" style="max-height: 30rem;" >
         <div class="row">
-          <div class="col-3 mx-auto "; style="display:flex; justify-content: center; align-items:center"  >
+          <div class=" col-md-3 mx-auto "; style="display:flex; justify-content: center; align-items:center"  >
             <img src="<%= person.selectedFile %>" alt="<%=person.name%> Image" class="img-fluid rounded-start " style="height: 9rem;" >
           </div>
-          <div class="col-9" >
+          <div class=" col-md-9" >
             <div class="card-body"> 
               
               <h5 class="card-title"><%= person.name %></h5>
