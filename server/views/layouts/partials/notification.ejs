@@ -1,0 +1,41 @@
+<!-- bootStrap toast -->
+
+<div class="toast-container position-fixed end-0 p-3" style="top:3rem; z-index:10">
+
+    <!-- toast -->
+    <div class="toast" id="notification" role="alert" aria-live="assertive" aria-atomic="true">
+        <div class="toast-header">
+            <strong class="me-auto">New Notification</strong>
+        </div>
+        <div class="toast-body">
+            <a href="/police" class="btn btn-primary btn-sm">Show</a>
+            <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="toast"
+                aria-label="Close">Dismiss</button>
+        </div>
+    </div>
+</div>
+
+
+<!-- require JS logic -->
+<script src="/socket.io/socket.io.js"></script> <!--import ClientSide socket.io -->
+<script>
+        
+    //via socket.io add notification eventListner
+        const socket = io(); //make io-object
+        socket.on('newMatch', msg => displayToast()) //apply eventLister + callback Function
+
+
+    //render toast 
+        //option initialization
+        var option = {
+            animation: true,
+            autohide: false
+        };
+        //toast rendering function
+        function displayToast() {
+            console.log('Toasted')
+            var toastEl = document.getElementById('notification');//get toast element
+            var myToast = new bootstrap.Toast(toastEl, option); //create toast
+            myToast.show(); //display toast
+        }
+</script>

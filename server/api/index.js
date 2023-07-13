@@ -4,7 +4,9 @@ const {Person} = require('../Models');
 
 const verifyFaceWithDatabase = async (imageBase64, location, info,io) => {
   // Iterate through all persons in the database and compare their images
-
+  io.emit('newMatch','New match Found. Reload for more info') //used for Notification
+  console.log('Notofication Send')
+  return
 
   const persons = await Person.find();
   for (const person of persons) {
