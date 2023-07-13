@@ -4,10 +4,36 @@
   <title>Police Home Page</title>
 </head>
 <body>
-
+  <div>
     <a href="/police/create">
-    <button >Add new Person</button>
+      <button >Add new Person</button>
     </a>
+    <form action="/police/search/" method="POST">
+      <label for="search">Search By:</label>
+      <input type="text" id="search" name="searchParams">
+      <select id="myDropdown" name="searchOption">
+        <option value="" disabled selected >Select Method...</option>
+        <option value="name" >Name</option>
+        <option value="loactions" >Location</option>
+      </select>
+      <button id="submitButton" type="submit" disabled>Search</button>
+    </form>
+  </div>
+    
+
+  <!-- The script to make the search button work only in case of an actual values selected in the dropdown searchOption -->
+  <script>
+    const dropdown = document.getElementById("myDropdown");
+    const submitButton = document.getElementById("submitButton");
+  
+    dropdown.addEventListener("change", function() {
+      if (dropdown.value !== "") {
+        submitButton.disabled = false;
+      } else {
+        submitButton.disabled = true;
+      }
+    });
+  </script>
 
   <h1>All People Details</h1>
   <% People.forEach(function(person){ %>

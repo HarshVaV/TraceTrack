@@ -1,4 +1,4 @@
-const { crudRepository } = require("../repositories");
+const { crudRepository , searchRepository } = require("../repositories");
 
 async function getPeople(){
     try {
@@ -63,10 +63,26 @@ async function deletePerson(id) {
     }
 }
 
+async function searchPerson(option , params){
+    try {
+        if(option === "name"){
+            const People = await searchRepository.searchByName(option , params);
+            return People;
+        } else{
+            const People = await searchRepository.searchByLocation(option , params);
+            return People;
+        }
+    } catch (error) {
+        console.log(error);
+        throw error;
+    }
+}
+
 module.exports = {
     getPeople,
     getPerson,
     createPerson,
     editPerson,
-    deletePerson
+    deletePerson,
+    searchPerson
 };
