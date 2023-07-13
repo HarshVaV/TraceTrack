@@ -109,11 +109,34 @@ async function deletePerson(req , res) {
     }
 }
 
+async function searchPerson(req , res) {
+    try {
+        console.log(req.body);
+
+        const option= req.body.searchOption;
+        const param= req.body.searchParams;
+        
+        const People = await PoliceServices.searchPerson(option , param);
+
+        if(!People){
+            res.send("No Results found");
+        }else{
+            res.render("police/home" , {
+                People: People
+            });
+        }
+
+    } catch (error) {
+        return res.status(500).send('Error in police controller');
+    }
+}
+
 module.exports = {
     getPersons,
     getPerson,
     createPerson,
     editPersonGet,
     editPersonPost,
-    deletePerson
+    deletePerson,
+    searchPerson
 }

@@ -20,10 +20,34 @@
             </li>
             
           </ul>
-          <form class="d-flex" action="/police" method="GET" role="search">
+          <form action="/police/search/" method="POST">
+            <label for="search">Search By:</label>
+            <input type="text" id="search" name="searchParams">
+            <select id="myDropdown" name="searchOption">
+              <option value="" disabled selected >Select Method...</option>
+              <option value="name" >Name</option>
+              <option value="loactions" >Location</option>
+            </select>
+            <button id="submitButton" type="submit" disabled>Search</button>
+          </form>
+
+          <script>
+            const dropdown = document.getElementById("myDropdown");
+            const submitButton = document.getElementById("submitButton");
+          
+            dropdown.addEventListener("change", function() {
+              if (dropdown.value !== "") {
+                submitButton.disabled = false;
+              } else {
+                submitButton.disabled = true;
+              }
+            });
+          </script>
+
+          <!-- <form class="d-flex" action="/police" method="GET" role="search">
               <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="location" id="location">
               <button class="btn btn-outline-warning me-3" type="submit">Search</button>
-           </form>
+           </form> -->
            <br>
             <a class="btn btn-danger" href="/logout">Logout</a>
         </div>

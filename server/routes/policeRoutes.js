@@ -24,4 +24,6 @@ router.route("/create")
     })
     .post(isLoggedIn, uploadMiddleware , policeController.createPerson);
 
+router.post("/search/" , policeController.searchPerson);
+
 module.exports = router;
