@@ -2,7 +2,7 @@
     <%- include('../layouts/partials/navbar')%>
 
 <!-- 
-    <% const id = person._id.toString() %>
+    <% const id= person._id.toString() %>
         <% console.log(id) %>
     <img id="image" src="<%= person.selectedFile %>" alt="Converted Image" width="20%" height="20%">
   <h1>Edit Person Information</h1>
@@ -39,9 +39,7 @@
     <h1 class="text-center mt-3">Edit Information</h1>
 
     <!-- Form -->
-
-    <form class="row g-3 needs-validation m-3" action="/police/edit/<%=id%>" method="POST"
-        enctype="multipart/form-data" novalidate>
+    <form class="row g-3 needs-validation m-3" action="/police/edit/<%=person._id%>" method="POST"novalidate> 
         <!-- Name -->
         <div class="col-md-12">
             <label for="name" class="form-label">Name</label>
@@ -99,12 +97,7 @@
             </div>
         </div>
 
-        <!-- image -->
-        <div class="mb-3">
-            <label for="image" class="form-label">Upload New Image</label>
-            <input type="file" class="form-control" id="image" name="image" accept="image/*" value=<%= person.selectedFile %> >
-            <div class="invalid-feedback">Please provide Image</div>
-        </div>
+        
         <!-- additionalDetails -->
         <div class="mb-3">
             <label for="details" class="form-label">Details</label>
@@ -121,7 +114,7 @@
 
         <div class="col-12">
             <button class="btn btn-primary" type="submit">Submit</button>
-            <a class="btn btn-warning" href=/police/<%=id%>">&nbsp;Back&nbsp;</a>
+            <a class="btn btn-warning" href=/police/<%=person._id%>">&nbsp;Back&nbsp;</a>
         </div>
     </form>
 
