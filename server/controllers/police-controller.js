@@ -121,7 +121,9 @@ async function searchPerson(req , res) {
         if(!People){
             res.send("No Results found");
         }else{
-            console.log(People);
+            res.render("police/home" , {
+                People: People
+            });
         }
 
     } catch (error) {
