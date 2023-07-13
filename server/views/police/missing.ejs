@@ -1,47 +1,87 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <title>Missing Details</title>
-</head>
-<body>
+<% layout('layouts/boilerplate') %>
+    <%- include('../layouts/partials/navbar')%>
+        <%- include('../layouts/partials/notification')%>
 
-    <a href="/police">
-    <button >Home</button>
-    </a>
-
-  <h1>Missing Person:</h1>
-    <div>
-        <!-- <h1>hi</h1> -->
-        <img id="image" src="<%= person.selectedFile %>" alt="Converted Image" width="20%" height="20%">
-        <h2><%= person.name %></h2>
-        <p>Age: <%= person.age %></p>
-        <p>Gender: <%= person.gender %></p>
-        <p>Details: <%= person.details %></p> 
-        
-        <%  if(person.status === 0){ %>
-                <p>Status: Still Not Found</p>
-        <%  }else{ %>
-                <p>Status: Found</p>
-        <%  } %>
-        <%  if(person.locations.length > 0){ %>
-            <ul>
-        <%  (person.locations).forEach(function(locat){ %>
-                <li><%= locat.location %></li>
-            </ul>
-        <%  })} %> 
-        <% const id = person._id.toString() %>
-        <% console.log(id) %>
-        <div>
-            <a href="/police/edit/<%=id%>">
-                <button>Edit</button>
-            </a>
-            <form action="/police/delete/<%=id%>" method="POST">
-                <button type="submit">Delete</button>
-            </form>
-                
-        </div>
-    </div>
+            <!-- <div class="container mt-5 col-md-10 offset-md-1">
+                <div class="row">
 
 
-</body>
-</html>
+                    <div class="col col-md-4 px-auto">
+                        <img class=" rounded mx-auto" id="image" src="<%= person.selectedFile %>" alt="Converted Image"  style="max-height:20rem">
+                    </div>
+
+                    <div class="col col-md-4 mt-5">
+                        <h2>
+                            <%= person.name %>
+                        </h2>
+                        <p>Age: <%= person.age %>
+                        </p>
+                        <p>Gender: <%= person.gender %>
+                        </p>
+                        <p>Details: <%= person.details %>
+                        </p>
+
+                        <% if(person.status===0){ %>
+                            <p>Status: Still Not Found</p>
+                            <% }else{ %>
+                                <p>Status: Found</p>
+                                <% } %>
+                                    <% if(person.locations.length> 0){ %>
+                                        <ul>
+                                            <% (person.locations).forEach(function(locat){ %>
+                                                <li>
+                                                    <%= locat.location %>
+                                                </li>
+                                        </ul>
+                                        <% })} %>
+                                            <% const id=person._id.toString() %>
+                                                <% console.log(id) %>
+                                                    <div>
+                                                        <a href="/police/edit/<%=id%>">
+                                                            <button>Edit</button>
+                                                        </a>
+                                                        <form action="/police/delete/<%=id%>" method="POST">
+                                                            <button type="submit">Delete</button>
+                                                        </form>
+
+                                                    </div>
+                    </div>
+                </div>
+            </div> -->
+
+            <div class="card col-md-10 mx-auto shadow p-3 mb-3 bg-body rounded" >
+                <div class="row g-0">
+                  <div class="col-12 col-md-4 d-flex">
+                    <img class=" rounded mx-auto" id="image" src="<%= person.selectedFile %>" alt="Converted Image"  style="max-height:inherit;max-width:inherit; object-fit:cover">
+                  </div>
+                  <div class="col-md-8">
+                    <div class="card-body">
+                      <div class="card-title">
+                        <h2> <%= person.name %></h2>
+                        <p>Case Id: <%= person._id %> </p>
+                     </div>
+                      <div class="card-text">
+                        <p><strong>Age:</strong> <%= person.age %></p>
+                        <p><strong>Gender:</strong> <%= person.gender %></p>
+                        <p><strong>Staus:</strong> <%= person.status===0?'Missing':'Wanted' %>
+                        </p>
+                        <p><strong>Details:</strong> <%= person.details%>
+                        </p>
+                      </div>
+                      <p class="card-text">
+                        <small class="text-muted">
+                            Last updated at <%=person.lastUpdated.toString().split('GMT')[0]%>
+                        </small>
+                    </p>
+                    <div>
+                       
+                        <form action="/police/delete/<%=id%>" method="POST">
+                            <a class="btn btn-warning " href="/police/edit/<%=id%>"> &nbsp; Edit &nbsp;</a>
+                            <button class="btn btn-danger" type="submit">Delete</button>
+                        </form>
+
+                    </div>
+                    </div>
+                  </div>
+                </div>
+              </div>

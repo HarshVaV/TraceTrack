@@ -1,9 +1,7 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <title>Edit Person Information</title>
-</head>
-<body>
+<% layout('layouts/boilerplate') %>
+    <%- include('../layouts/partials/navbar')%>
+
+<!-- 
     <% const id = person._id.toString() %>
         <% console.log(id) %>
     <img id="image" src="<%= person.selectedFile %>" alt="Converted Image" width="20%" height="20%">
@@ -33,6 +31,98 @@
       </select>
     </div>
     <button type="submit">Submit</button>
-  </form>
-</body>
-</html>
+  </form> -->
+
+    
+    
+  <div class="bg-white my-auto col-md-8 mx-auto shadow p-3  bg-body rounded mb-2">
+    <h1 class="text-center mt-3">Edit Information</h1>
+
+    <!-- Form -->
+
+    <form class="row g-3 needs-validation m-3" action="/police/edit/<%=id%>" method="POST"
+        enctype="multipart/form-data" novalidate>
+        <!-- Name -->
+        <div class="col-md-12">
+            <label for="name" class="form-label">Name</label>
+            <input type="text" class="form-control" id="name" name="name" value="<%=person.name%>" required>
+
+            <div class="valid-feedback">
+                Looks good!
+            </div>
+            <div class="invalid-feedback">
+                Please provide Name
+            </div>
+        </div>
+
+
+
+        <!-- Gender -->
+        <div class="col-md-4">
+            <label for="gender" class="form-label">Gender</label>
+            <input type="text" class="form-control" id="gender" name="gender" value="<%=person.gender%>" required>
+            <div class="valid-feedback">
+                Looks good!
+            </div>
+            <div class="invalid-feedback">
+                Please provide Gender
+            </div>
+        </div>
+
+
+        <!-- Age -->
+        <div class="col-md-4">
+            <label for="age" class="form-label">Age</label>
+            <input type="text" class="form-control" id="age" name="age" value="<%=person.age%>" required>
+
+            <div class="valid-feedback">
+                Looks good!
+            </div>
+            <div class="invalid-feedback">
+                Please provide Age
+            </div>
+        </div>
+
+        <!-- Status-->
+        <div class="col-md-4">
+            <label for="status" class="form-label">Status</label>
+            <select class="form-select" id="status" name="status" required>
+                <option selected disabled value=""> </option>
+                <option value=0 <%=person.status===0?"selected":""%> >Missing</option>
+                <option value=1 <%=person.status===1?"selected":""%> >Wanted</option>
+            </select>
+            <div class="valid-feedback">
+                Looks good!
+            </div>
+            <div class="invalid-feedback">
+                Please select Status
+            </div>
+        </div>
+
+        <!-- image -->
+        <div class="mb-3">
+            <label for="image" class="form-label">Upload New Image</label>
+            <input type="file" class="form-control" id="image" name="image" accept="image/*" value=<%= person.selectedFile %> >
+            <div class="invalid-feedback">Please provide Image</div>
+        </div>
+        <!-- additionalDetails -->
+        <div class="mb-3">
+            <label for="details" class="form-label">Details</label>
+            <textarea class="form-control" id="validationTextarea" id="details" name="details" rows="5"
+                required><%=person.details%></textarea>
+            <div class="valid-feedback">
+                Looks good!
+            </div>
+            <div class="invalid-feedback">
+                Please provide Description or Details
+            </div>
+
+        </div>
+
+        <div class="col-12">
+            <button class="btn btn-primary" type="submit">Submit</button>
+            <a class="btn btn-warning" href=/police/<%=id%>">&nbsp;Back&nbsp;</a>
+        </div>
+    </form>
+
+</div>
